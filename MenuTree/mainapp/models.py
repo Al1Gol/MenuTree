@@ -23,7 +23,7 @@ class Nesting_2(models.Model):
         return self.name
 
 # Третий уровень вложенности
-class Nesting_2(models.Model):
+class Nesting_3(models.Model):
     name = models.CharField(verbose_name="Наименование 3 пунка вложенности", max_length=100)
 
     def __str__(self):
