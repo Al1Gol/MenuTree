@@ -2,5 +2,9 @@
 {% load static %}
 
 {% block content %}
-    {{ menu_list.name }}
+    {% for menu in menu_list %}
+        <div class='menu-block'>
+            {{ menu.name }}
+        </div>
+    {% endfor %}
 {% endblock %}
