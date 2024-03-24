@@ -7,10 +7,12 @@
             <h1>{{ menu.name }}</h1>
             {% for el in parents %}
                 {% if el.menu_id.id == menu.id %}
-                    <div>{{ el.name }}</div>
+                    <div class='element-menu'>
+                        <p>{{ el.name }}</p>
+                    </div>
                 {% endif %}
             {% endfor %}
             <hr>
         </div>
     {% endfor %}
-{% endblock %}s
+{% endblock %}
