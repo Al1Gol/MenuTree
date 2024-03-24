@@ -2,17 +2,11 @@
 {% load static %}
 
 {% block content %}
+    <div class='menu-list'>
     {% for menu in menu_list %}
-        <div class='menu-block'>
-            <h1>{{ menu.name }}</h1>
-            {% for el in parents %}
-                {% if el.menu_id.id == menu.id %}
-                    <div class='element-menu'>
-                        <p>{{ el.name }}</p>
-                    </div>
-                {% endif %}
-            {% endfor %}
-            <hr>
-        </div>
+        <a href='{{menu.get_absolute_url}}'class='menu-btn'>
+            {{ menu.name }}
+        </a>
     {% endfor %}
+    </div>
 {% endblock %}

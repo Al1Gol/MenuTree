@@ -1,45 +1,37 @@
 from django.db import models
+from django.template.defaultfilters import slugify
+from django.urls import reverse
 
 
-# Список меню
+# Меню
 class Menus(models.Model):
-    name = models.CharField(
-        verbose_name="Наименование меню", max_length=100, unique=True
-    )
-
-    # Настройка отображения записи в админке
-    def __str__(self):
-        return self.name
-
-    # Настройка отображения наименования таблицы в админке
-    class Meta:
-        verbose_name = "Меню"
-        verbose_name_plural = "Меню"
-
-
-# Элементы меню
-class Elements(models.Model):
-    menu_id = models.ForeignKey(
-        "Menus", verbose_name="id меню", on_delete=models.CASCADE
-    )
     name = models.CharField(
         verbose_name="Наименование превого пунка вложенности",
         max_length=100,
         unique=True,
     )
     parent = models.ForeignKey(
-        "Elements",
+        "Menus",
         verbose_name="id родителя",
         on_delete=models.CASCADE,
         blank=True,
         null=True,
     )
+    slug = models.SlugField(verbose_name="URL", unique=True, null=False, blank=True)
 
     # Настройка отображения записи в админке
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):  # new
+        if not self.slug:
+            self.slug = slugify(self.name)
+        return super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse("mainapp:menu", kwargs={"name": self.name})
+
     # Настройка отображения наименования таблицы в админке
     class Meta:
-        verbose_name = "Элементы меню"
-        verbose_name_plural = "Элементы меню"
+        verbose_name = "Меню"
+        verbose_name_plural = "Меню"
