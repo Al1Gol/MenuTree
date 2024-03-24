@@ -3,7 +3,9 @@ from django.db import models
 
 # Список меню
 class Menus(models.Model):
-    name = models.CharField(verbose_name="Наименование меню", max_length=100)
+    name = models.CharField(
+        verbose_name="Наименование меню", max_length=100, unique=True
+    )
 
     # Настройка отображения записи в админке
     def __str__(self):
@@ -21,7 +23,9 @@ class Elements(models.Model):
         "Menus", verbose_name="id меню", on_delete=models.CASCADE
     )
     name = models.CharField(
-        verbose_name="Наименование превого пунка вложенности", max_length=100
+        verbose_name="Наименование превого пунка вложенности",
+        max_length=100,
+        unique=True,
     )
     parent = models.ForeignKey(
         "Elements", verbose_name="id родителя", on_delete=models.CASCADE, blank=True
