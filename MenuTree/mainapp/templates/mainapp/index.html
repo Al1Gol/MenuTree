@@ -5,6 +5,11 @@
     {% for menu in menu_list %}
         <div class='menu-block'>
             <h1>{{ menu.name }}</h1>
+            {% for el in parents %}
+                {% if el.menu_id.id == menu.id %}
+                    <div>{{ el.name }}</div>
+                {% endif %}
+            {% endfor %}
             <hr>
         </div>
     {% endfor %}

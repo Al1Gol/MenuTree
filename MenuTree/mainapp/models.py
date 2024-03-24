@@ -28,7 +28,11 @@ class Elements(models.Model):
         unique=True,
     )
     parent = models.ForeignKey(
-        "Elements", verbose_name="id родителя", on_delete=models.CASCADE, blank=True
+        "Elements",
+        verbose_name="id родителя",
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
     )
 
     # Настройка отображения записи в админке
