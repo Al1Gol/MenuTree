@@ -24,8 +24,7 @@ class Menus(models.Model):
         return self.name
 
     def save(self, *args, **kwargs):  # new
-        if not self.slug:
-            self.slug = slugify(self.name)
+        self.slug = slugify(self.name)
         return super().save(*args, **kwargs)
 
     def get_absolute_url(self):
