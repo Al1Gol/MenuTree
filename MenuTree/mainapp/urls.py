@@ -6,5 +6,5 @@ app_name = "mainapp"
 
 urlpatterns = [
     path("", menu_list, name="menu_list"),
-    path("<str:menu>/", menu, name="menu"),
+    path("<slug:post_slug>", menu, name="menu"),
 ]

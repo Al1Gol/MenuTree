@@ -10,6 +10,7 @@ def menu_list(request):
     return render(request, "mainapp/index.html", content)
 
 
-def menu(request, menu):
-    content = {"menu": menu}
+def menu(request, post_slug):
+    slug = post_slug
+    content = {"menu": menu, "slug": slug}
     return render(request, "mainapp/menu.html", content)
