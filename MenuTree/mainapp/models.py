@@ -17,7 +17,7 @@ class Menus(models.Model):
         blank=True,
         null=True,
     )
-    slug = models.SlugField(verbose_name="URL", unique=True, null=False, blank=True)
+    slug = models.SlugField(verbose_name="URL", unique=True, null=False)
 
     # Настройка отображения записи в админке
     def __str__(self):
