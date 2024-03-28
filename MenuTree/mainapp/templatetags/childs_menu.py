@@ -5,7 +5,13 @@ from mainapp.models import Menus
 register = template.Library()
 
 
-@register.inclusion_tag("template_tags/child_menu.html", takes_context=True)
-def components_menu(context, item):
-    childs = Menus.objects.all()
-    return {"item": item, "childs": childs}
+@register.inclusion_tag("template_tags/childs_tag.html", takes_context=True)
+def draw_menu(context, slug):
+    slug = slug[1:-1]
+    try:
+        menu = Menus.objects.get(slug=slug)
+        childs = Menus.objects.all().filter(parent=menu.id)
+        return {"menu": menu, "childs": childs, "context": context}
+    except Menus.DoesNotExist:
+        print("Не найдены резульатты для отрисовки draw_menu")
+        return {"menu": "", "context": context}
