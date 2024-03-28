@@ -3,5 +3,5 @@
 {% load static %}
 
 {% block content %}
-{% draw_menu 'vccv' %}
+    {% draw_menu request.path %}
 {% endblock %}

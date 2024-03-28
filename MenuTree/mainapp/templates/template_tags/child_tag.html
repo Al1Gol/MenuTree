@@ -1,0 +1,5 @@
+<div>
+    {% for item in item.items.all %}
+        <a href="{{ item.get_url }}">{{ item.title }}</a>
+    {% endfor %}
+</div>

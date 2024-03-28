@@ -1,0 +1,8 @@
+{% load draw_menu %}
+<h1>{{menu.name}}<h1>
+{% for child in childs %}
+<div>
+    <a href='{{child.get_absolute_url}}'>{{child.name}}</a>
+</div>
+{% endfor %}
+    
