@@ -1,0 +1,8 @@
+{% for menu in menu_tree %}
+    {% if menu.parent.id == current_menu.id %}
+        <div>
+            {{menu.name}}
+            {% include "includes/inc_menu.html" with current_menu=menu%}
+        </div>
+    {% endif %}
+{% endfor %}
