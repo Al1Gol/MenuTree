@@ -6,12 +6,11 @@ register = template.Library()
 
 
 @register.inclusion_tag("template_tags/childs_tag.html", takes_context=True)
-def draw_menu(context, slug):
-    slug = slug[1:-1]
+def childs_menu(context, parent):
+    print(parent)
     try:
-        menu = Menus.objects.get(slug=slug)
-        childs = Menus.objects.all().filter(parent=menu.id)
-        return {"menu": menu, "childs": childs, "context": context}
+        childs = Menus.objects.all().filter(parent__id=parent)
+        return {"childs": childs, "context": context}
     except Menus.DoesNotExist:
-        print("Не найдены резульатты для отрисовки draw_menu")
+        print("Не найдены резульатты для отрисовки childs_menu")
         return {"menu": "", "context": context}

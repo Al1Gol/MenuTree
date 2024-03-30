@@ -1,9 +1,10 @@
-{% load childs_tag %}
+{% load childs_menu %}
 
 <h1>{{menu.name}}<h1>
 {% for child in childs %}
 <div>
     <a href='{{child.get_absolute_url}}'>{{child.name}}</a>
+    {% childs_menu child.id %}
 </div>
 {% endfor %}
     

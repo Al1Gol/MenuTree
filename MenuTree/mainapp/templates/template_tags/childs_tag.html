@@ -1,5 +1,5 @@
-<div>
-    {% for item in item.items.all %}
-        <a href="{{ item.get_url }}">{{ item.title }}</a>
+    {% for child in childs %}
+    <div>
+        <a href="{{ item.get_url }}">{{ child.name }}</a>
+    </div>
     {% endfor %}
-</div>
