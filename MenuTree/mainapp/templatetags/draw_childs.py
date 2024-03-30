@@ -6,7 +6,7 @@ register = template.Library()
 
 
 @register.inclusion_tag("template_tags/childs_tag.html", takes_context=True)
-def childs_menu(context, parent):
+def draw_childs(context, parent):
     print(parent)
     try:
         childs = Menus.objects.all().filter(parent__id=parent)

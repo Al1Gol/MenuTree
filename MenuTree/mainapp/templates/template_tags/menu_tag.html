@@ -1,10 +1,10 @@
-{% load childs_menu %}
+{% load draw_childs %}
 
 <h1>{{menu.name}}<h1>
 {% for child in childs %}
 <div>
     <a href='{{child.get_absolute_url}}'>{{child.name}}</a>
-    {% childs_menu child.id %}
+    {% draw_childs child.id %}
 </div>
 {% endfor %}
     
