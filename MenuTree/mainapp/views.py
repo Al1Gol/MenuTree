@@ -10,8 +10,9 @@ def menu_list(request):
     return render(request, "mainapp/index.html", content)
 
 
-def menu(request, slug):
+def menu(request, *args, **kwargs):
+    print("args menu")
+    print(*args)
     menu_tree = Menus.objects.all()
-    current_menu = Menus.objects.get(slug=slug)
-    content = {"menu_tree": menu_tree, "current_menu": current_menu}
+    content = {"menu_tree": menu_tree}
     return render(request, "mainapp/menu.html", content)

@@ -27,8 +27,12 @@ class Menus(models.Model):
         self.slug = slugify(self.name)
         return super().save(*args, **kwargs)
 
-    def get_absolute_url(self):
-        return reverse("mainapp:menu", kwargs={"slug": self.slug})
+    def get_full_path(self):
+        url = "/{}/".format(self.slug)
+        return url
+
+    # def get_absolute_url(self):
+    #    return reverse("mainapp:menu", kwargs={"slug": self.slug})
 
     # Настройка отображения наименования таблицы в админке
     class Meta:

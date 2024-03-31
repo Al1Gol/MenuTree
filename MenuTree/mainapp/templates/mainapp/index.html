@@ -4,7 +4,7 @@
 {% block content %}
     <div class='menu-list'>
     {% for menu in menu_list %}
-        <a href='{{menu.get_absolute_url}}'class='menu-btn'>
+        <a href='{{menu.get_full_path}}'class='menu-btn'>
             {{ menu.name }}
         </a>
     {% endfor %}
